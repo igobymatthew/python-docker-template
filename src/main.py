@@ -1,0 +1,1 @@
+print("Template Python app is running in Docker.")
