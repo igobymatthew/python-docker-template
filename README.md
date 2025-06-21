@@ -23,7 +23,8 @@ A minimal, reusable template for containerized Python 3.10 projects using Docker
 ├── run.sh                 # Run helper for Unix/WSL
 ├── run.bat                # Run helper for Windows
 └── src/
-    └── main.py            # Example Python script
+    ├── main.py            # Example Python script
+    └── rag_engine.py       # RAG setup script
 ```
 
 ---
@@ -33,12 +34,14 @@ A minimal, reusable template for containerized Python 3.10 projects using Docker
 ### 🐧 Unix / WSL / Git Bash
 ```bash
 ./run.sh main.py
+./run.sh rag_engine.py  # run RAG engine
 ./run.sh main.py YourName  # with arguments
 ```
 
 ### 🪟 Windows (CMD or PowerShell)
 ```cmd
 run.bat main.py
+run.bat rag_engine.py   # run RAG engine
 run.bat main.py YourName  # with arguments
 ```
 
