@@ -1,0 +1,6 @@
+fetch_reddit:
+  script: scripts/fetch_reddit.py
+preprocess:
+  script: scripts/preprocess.py
+train:
+  script: scripts/train_model.py

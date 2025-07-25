@@ -4,3 +4,5 @@ scikit-learn
 torch
 transformers
 datasets
+ftfy
+clean-text

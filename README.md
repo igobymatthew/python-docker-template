@@ -18,12 +18,24 @@ A minimal, reusable template for containerized Python 3.10 projects using Docker
 
 ```
 .
-├── Dockerfile             # Python 3.10 container setup
-├── requirements.txt       # Python dependencies
-├── run.sh                 # Run helper for Unix/WSL
-├── run.bat                # Run helper for Windows
-└── src/
-    └── main.py            # Example Python script
+├── Dockerfile
+├── requirements.txt
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── external/
+├── models/
+├── notebooks/
+├── scripts/
+│   ├── fetch_reddit.py
+│   ├── preprocess.py
+│   ├── train_model.py
+│   └── submit.py
+├── external/
+│   └── mcp-server-reddit/
+├── configs/
+│   └── pipeline.yaml
+└── kaggle_submission.ipynb
 ```
 
 ---
@@ -76,6 +88,24 @@ docker build -t py310-base .
 
 - Docker Desktop (Windows/Linux/macOS)
 - Python dependencies managed via `requirements.txt`
+- ftfy
+- clean-text
+- pandas
+- scikit-learn
+- transformers
+- datasets
+
+---
+
+## Dataset Format
+Multi-label columns:
+- identity_attack
+- insult
+- obscene
+- severe_toxicity
+- sexual_explicit
+- threat
+- toxicity
 
 ---
 
