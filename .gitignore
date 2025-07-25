@@ -5,3 +5,5 @@ __pycache__/
 .vscode/
 *.DS_Store
 *.idea/
+external/mcp-server-reddit/.env
+external/mcp-server-reddit/__pycache__/

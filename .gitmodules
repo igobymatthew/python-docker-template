@@ -1,0 +1,3 @@
+[submodule "external/mcp-server-reddit"]
+  path = external/mcp-server-reddit
+  url = https://github.com/hawstein/mcp-server-reddit.git
