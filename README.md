@@ -1,114 +1,74 @@
-# Python Docker Template
+# ⌬ Zer0-Day Bokeh ⌬
 
-A minimal, reusable template for containerized Python 3.10 projects using Docker. Designed for fast setup, isolated environments, and cross-platform compatibility (Windows, Linux, WSL, Git Bash).
+*Your vision, sharpened.*
 
----
-
-## 🚀 Features
-
-- Python 3.10 runtime (Dockerized)
-- Cross-platform run scripts (`.bat` for Windows, `.sh` for Unix/WSL)
-- Auto-installs dependencies from `requirements.txt`
-- Isolated from host system — no virtualenvs or pip clutter
-- Clean one-command execution of any Python script
+A command-line utility, forged in the neon-drenched alleys of the net, to manipulate the depth of field of your images. This script uses the MiDaS intelligence to construct a depth map and applies a customizable, high-quality bokeh effect. Dial in the perfect blur, from creamy circular bokeh to razor-sharp polygonal apertures.
 
 ---
 
-## 📁 Project Structure
+## ► C Y B E R W A R E _ I N S T A L L A T I O N
 
-```
-.
-├── Dockerfile
-├── requirements.txt
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── external/
-├── models/
-├── notebooks/
-├── scripts/
-│   ├── fetch_reddit.py
-│   ├── preprocess.py
-│   ├── train_model.py
-│   └── submit.py
-├── external/
-│   └── mcp-server-reddit/
-├── configs/
-│   └── pipeline.yaml
-└── kaggle_submission.ipynb
-```
+Clone this repository and uplink the necessary neural dependencies.
 
----
-
-## 🧪 Getting Started
-
-### 🐧 Unix / WSL / Git Bash
 ```bash
-./run.sh main.py
-./run.sh main.py YourName  # with arguments
-```
-
-### 🪟 Windows (CMD or PowerShell)
-```cmd
-run.bat main.py
-run.bat main.py YourName  # with arguments
+# Install system dependencies
+pip install -r requirements.txt
 ```
 
 ---
 
-## 🛠️ Modify for Your Project
+## ► O P E R A T I O N
 
-- Add your source files inside the `src/` folder
-- Update `requirements.txt` with any Python packages you need
-- Rebuild the Docker image only if `requirements.txt` changes:
-  ```bash
-  docker build -t py310-base .
-  ```
+Execute the script from your terminal. Point it at an input image and configure the parameters to your specifications. The processed image will be saved to the `output/` directory by default.
 
----
-
-## ♻️ Clean Rebuild (Optional)
-To force a full rebuild:
+**Syntax:**
 ```bash
-docker rmi py310-base
-docker build -t py310-base .
+python dof_bokeh.py --input <path_to_image> [OPTIONS]
 ```
 
----
+**Example Operations:**
 
-## 🔒 Why Docker?
+1.  **Octagonal Bokeh on a Street Scene:**
+    ```bash
+    python dof_bokeh.py --input examples/street.jpg --blades 8 --focus 0.72 --max_radius 20
+    ```
 
-- No virtualenvs or global Python conflicts
-- Reproducible builds across machines
-- Great for training, experiments, APIs, and CLI tools
+2.  **Circular Bokeh on a Portrait (Click-to-Focus):**
+    A preview window will appear. Click on the subject to set the focal point, then press any key to generate the image.
+    ```bash
+    python dof_bokeh.py --input examples/portrait.jpg --blades 0 --preview
+    ```
 
----
-
-## 📦 Dependencies
-
-- Docker Desktop (Windows/Linux/macOS)
-- Python dependencies managed via `requirements.txt`
-- ftfy
-- clean-text
-- pandas
-- scikit-learn
-- transformers
-- datasets
+3.  **Hexagonal Bokeh on a Product Shot (Auto-Focus):**
+    ```bash
+    python dof_bokeh.py --input examples/product.jpg --blades 6 --angle 15 --focus_percentile 0.6
+    ```
 
 ---
 
-## Dataset Format
-Multi-label columns:
-- identity_attack
-- insult
-- obscene
-- severe_toxicity
-- sexual_explicit
-- threat
-- toxicity
+## ► G A L L E R Y
+
+*A glimpse into the abyss...*
+
+| Original | Zer0-Day Bokeh Applied |
+| :---: | :---: |
+| ![Original Portrait](examples/portrait.jpg) | ![Bokeh Portrait](assets/portrait_bokeh.jpg) |
+| *Portrait with circular bokeh* |
+| ![Original Product](examples/product.jpg) | ![Bokeh Product](assets/product_bokeh.jpg) |
+| *Product shot with hexagonal bokeh* |
+| ![Original Street](examples/street.jpg) | ![Bokeh Street](assets/street_bokeh.jpg) |
+| *Street scene with octagonal bokeh* |
 
 ---
 
-## 📝 License
+## ► P A R A M E T E R S
 
-MIT License. Use freely.
+- `--input`: Path to the input image. (Required)
+- `--outdir`: Directory to save the output image. (Default: `output`)
+- `--blades`: Number of aperture blades for bokeh shape. 0 creates a perfect circle. (Default: 8)
+- `--angle`: Rotation angle for polygonal bokeh.
+- `--max_radius`: Maximum blur radius. Controls the intensity of the DoF effect. (Default: 28)
+- `--sharpness`: Controls the sharpness of the transition between in-focus and out-of-focus areas. (Default: 12)
+- `--preview`: Enable interactive click-to-focus preview window.
+- `--focus_percentile`: Automatically set focus based on a percentile of the depth map (e.g., 0.6 focuses on the foreground).
+- `--focus`: Manually set a normalized focus depth from 0.0 (closest) to 1.0 (farthest).
